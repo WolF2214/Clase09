@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %} Alumnos: Listado {% endblock %}    
+
+{% block content %}
+    <div class="row">
+      <div class="col col-sm-12 col-lg-8">
+        <table class="table table-success table-striped">
+            <thead>
+                <th id='titulo1'>Apellido</th>
+                <th  class="titulo">Nombre</th>
+                <th>Accion</th>
+            </thead>
+            <body>
+                {% for item in alumnos%}
+                <tr>
+                    <td>{{ item.last_name }}</td>
+                    <td  class="link">{{ item.first_name }}</td>
+                    <td><a href="/alumnos/{{ item.id }}">Detalle</a></td>
+                </tr>
+                {% endfor %}  
+            </body>
+        </table>
+    </div>
+    <div class="col col-sm-12 col-lg-4">
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            Error de validacion en el formulario
+        </div>
+        {% endif %}
+        <form method="POST" action=".">
+            {% csrf_token %}
+            {{ form }}
+            <br>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        
+    </div>
+</div>
+
+
+<!--{% for item in alumnos%}
+<p><a href="/alumnos/{{ item.id }}">{{ item.last_name }}, {{ item.first_name }}</a></p>
+{% endfor %}-->
+
+
+
+<br>
+
+
+
+
+<!--<a href="javascript: change_text() ">ejecutar java script</a>
+
+<script>
+    function change_text1(){
+        document.getElementById('titulo1').innerHTML = 'Otro texto';
+    }
+    function change_text(){
+        debugger;
+        var name = document.getElementById('id_first_name').value;
+        console.log(name);
+        alert('el nombre es: ' + name);
+    }
+    function foo() {
+        var htppRequest = new XMLHttpRequest ();
+        htppRequest.open('GET', "/alumnos/");
+        htppRequest.send();
+        debugger;
+        return htppRequest.responseText;
+    }
+  
+</script>-->
+
+
+
+
+{% endblock %}

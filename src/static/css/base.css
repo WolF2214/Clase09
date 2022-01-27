@@ -1,0 +1,24 @@
+h1 {
+    color: red;
+}
+    
+h1:hover {
+    text-shadow: 1px 1px 1px #000000;
+}
+
+.titulo {
+    text-decoration-line: overline;    
+}
+
+.link {
+    cursor: progress;
+}
+
+h1.titulo {
+    cursor: progress;
+}
+
+.table {
+    width: 100%;
+    border: 1px #000000 solid;
+}

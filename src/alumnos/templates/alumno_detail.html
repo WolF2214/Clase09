@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+  
+{% block content %}
+<p>Apellido: {{ alumno.last_name }}</p>
+<p>Nombre: {{ alumno.first_name }}</p>
+<p>Cumple años: {{ alumno.birthday }}</p>
+<p>Curso: {{ alumno.curso }}</p>
+{% if request.user.id == 1 %}
+<!--{% if has_change_perm}-->
+<form method="POST" action="/alumnos/{{alumno.id}}">
+{% csrf_token %}
+{{ form }}
+<P>Fecha creacion: {{ form.instance.date_create }}</P>
+<P>Fecha ultima actualizacion: {{ form.instance.last_update }}</P>
+<button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+<!--<a href="/alumno/delete/{{alumno.id}}">Borrar alumno </a>-->
+{% endif %}
+{% endblock%}
+
